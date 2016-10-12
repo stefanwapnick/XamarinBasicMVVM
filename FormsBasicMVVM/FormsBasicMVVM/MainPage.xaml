@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:formsBasicMvvm="clr-namespace:FormsBasicMVVM;assembly=FormsBasicMVVM"
+             x:Class="FormsBasicMVVM.MainPage"
+             Title="One-Shot DateTime Page">
+
+  <!-- RIGHT NOW DATA CONTEXT SET IN CODE BEHIND, OR CAN DO BELOW -->
+  <!--<ContentPage.BindingContext>
+    <formsBasicMvvm:ClockViewModel/>
+  </ContentPage.BindingContext>-->
+
+  <StackLayout Padding="10,0">
+    <!-- Time -->
+    <Label Text="{Binding DateTime, StringFormat='{0:T}'}" FontSize="Large"/>
+
+    <!-- Current color -->
+    <BoxView Color="{Binding Color}" VerticalOptions="FillAndExpand" />
+
+    <!-- Slider values --> 
+    <Label Text="{Binding Hue, StringFormat='Hue = {0:F2}'}" HorizontalOptions="Center" />
+    <Slider Value="{Binding Hue, Mode=TwoWay}" />
+
+    <Label Text="{Binding Saturation, StringFormat='Saturation = {0:F2}'}" HorizontalOptions="Center" />
+    <Slider Value="{Binding Saturation, Mode=TwoWay}" />
+
+    <Label Text="{Binding Luminosity, StringFormat='Luminosity = {0:F2}'}" HorizontalOptions="Center" />
+    <Slider Value="{Binding Luminosity, Mode=TwoWay}" />
+
+    <Button Text="Reset" HorizontalOptions="Fill" Command="{Binding ResetCommand}" CommandParameter="test"/>
+    
+  </StackLayout>
+
+
+
+
+  <!-- ANOTHER EXAMPLE WITH STATIC BINDING CONTEXT -->
+  <!--<StackLayout BindingContext="{x:Static sys:DateTime.Now}"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="CenterAndExpand">
+
+    <Label Text="{Binding Year, StringFormat='The year is {0}'}" />
+    <Label Text="{Binding StringFormat='The month is {0:MMMM}'}" />
+    <Label Text="{Binding Day, StringFormat='The day is {0}'}" />
+    <Label Text="{Binding StringFormat='The time is {0:T}'}" />
+
+  </StackLayout>-->
+</ContentPage>
